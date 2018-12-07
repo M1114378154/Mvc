@@ -16,7 +16,7 @@ namespace WebApplication2.Controllers
         public Customer getCustomer()
         {
             Customer ct = new Customer();
-            ct.CustomerName = "aaaa";
+            ct.CustomerName = "aaa";
             ct.Address = "mvc";
             return ct;
         }

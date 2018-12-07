@@ -20,5 +20,39 @@ namespace WebApplication2.Controllers
             ct.Address = "mvc";
             return ct;
         }
+        public ActionResult GetView()
+        {
+            //获取当前时间
+            //获取当前小时数
+            //根据小时数判断需要返回那个视图,<12 返回myview 否则返回yourview>
+            //int h = 0;
+            //h = DateTime.Now.Hour;
+            //if (h < 12)
+            //{
+            //    return View("MyView");
+            //}
+            //else
+            //{
+            //    return View("YourView");
+            //}
+
+            string greeting;
+            DateTime dt = DateTime.Now;
+            int hour = dt.Hour;
+            if (hour < 12)
+            {
+                greeting = "早上好";
+            }
+            else
+            {
+                greeting = "中午好";
+            }
+            ViewData["greeting"] = greeting;
+            Employee emp = new Employee();
+            emp.Name = "李四";
+            emp.Salary = 2002;
+            ViewData["EmpKey"] = emp;
+            return View("MyView");
+        }
     }
 }

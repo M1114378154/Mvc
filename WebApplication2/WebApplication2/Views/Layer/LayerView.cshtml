@@ -1,0 +1,26 @@
+﻿@using WebApplication2.ViewModels
+@model EmployeeViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LayerView</title>
+</head>
+<body>
+
+    <div> 
+        <h2>员工信息</h2>
+        <p>姓名：@Model.Name</p>
+        <p>工资：@Model.Salary.ToString("C")</p>
+        <br/>
+        <h2>客户信息</h2>
+        <p>姓名：@Model.CustomerName</p>
+        <p>地址：@Model.Address</p>
+    </div>
+</body>
+</html>

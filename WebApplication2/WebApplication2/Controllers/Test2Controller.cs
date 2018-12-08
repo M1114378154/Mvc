@@ -21,7 +21,7 @@ namespace WebApplication2.Controllers
             }
             else
             {
-                greeting = "中午好";
+                greeting = "下午好";
             }
             ViewBag.greeting = greeting;
             Customer cus = new Customer();

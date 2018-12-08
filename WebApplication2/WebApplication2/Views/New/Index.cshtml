@@ -1,0 +1,26 @@
+﻿@using WebApplication2.Models
+@model Customer
+@{
+    Layout = null;
+    Employee emp = (Employee)ViewData["EmpKey"];
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <h2>员工信息</h2>
+        <p>姓名：@emp.Name</p>
+        <p>工资：@emp.Salary.ToString("C")</p>
+
+        <h2>客户信息</h2>
+        <p>姓名：@Model.CustomerName</p>
+        <p>地址：@Model.Address</p>
+    </div>
+</body>
+</html>

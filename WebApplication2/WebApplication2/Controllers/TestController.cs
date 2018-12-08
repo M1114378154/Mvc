@@ -47,12 +47,15 @@ namespace WebApplication2.Controllers
             {
                 greeting = "中午好";
             }
-            ViewData["greeting"] = greeting;
+            //ViewData["greeting"] = greeting;
+            ViewBag.greeting= greeting;
             Employee emp = new Employee();
             emp.Name = "李四";
-            emp.Salary = 2002;
-            ViewData["EmpKey"] = emp;
-            return View("MyView");
+            emp.Salary = 15000;
+            //ViewData["EmpKey"] = emp;
+            ViewBag.EmpKey = emp;
+            return View("MyView",emp);
+
         }
     }
 }

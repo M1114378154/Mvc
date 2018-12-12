@@ -13,10 +13,10 @@ namespace WebApplication2.Controllers
         public ActionResult LayerView()
         {
            EmployeeViewModel vmEmp = new EmployeeViewModel();
-            vmEmp.Name = "张三";
-            vmEmp.Salary = 1500;
-            vmEmp.CustomerName = "李四";
-            vmEmp.Address = "柳州";
+            //vmEmp.Name = "张三";
+            //vmEmp.Salary = 1500;
+            //vmEmp.CustomerName = "李四";
+            //vmEmp.Address = "柳州";
             return View(vmEmp);
 
         }

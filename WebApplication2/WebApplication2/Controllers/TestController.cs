@@ -67,7 +67,7 @@ namespace WebApplication2.Controllers
 
             //ViewData["EmpKey"] = emp;
             //ViewBag.EmpKey = emp;
-            vmEmp.UserName = "管理员";
+            //vmEmp.UserName = "管理员";
             return View(vmEmp);
 
         }

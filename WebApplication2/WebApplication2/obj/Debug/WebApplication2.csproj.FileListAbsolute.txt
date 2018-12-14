@@ -55,6 +55,11 @@ D:\MIN\MVC\WebApplication2\WebApplication2\bin\zh-Hans\System.Web.Razor.resource
 D:\MIN\MVC\WebApplication2\WebApplication2\bin\zh-Hans\System.Web.WebPages.resources.dll
 D:\MIN\MVC\WebApplication2\WebApplication2\bin\zh-Hans\System.Web.WebPages.Deployment.resources.dll
 D:\MIN\MVC\WebApplication2\WebApplication2\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
-D:\MIN\MVC\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache
 D:\MIN\MVC\WebApplication2\WebApplication2\obj\Debug\WebApplication2.dll
 D:\MIN\MVC\WebApplication2\WebApplication2\obj\Debug\WebApplication2.pdb
+D:\MIN\MVC\WebApplication2\WebApplication2\bin\EntityFramework.dll
+D:\MIN\MVC\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.dll
+D:\MIN\MVC\WebApplication2\WebApplication2\bin\EntityFramework.xml
+D:\MIN\MVC\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.xml
+D:\MIN\MVC\WebApplication2\WebApplication2\bin\zh-Hans\EntityFramework.resources.dll
+D:\MIN\MVC\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache

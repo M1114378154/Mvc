@@ -1,0 +1,35 @@
+﻿@model WebApplication2.ViewModels.CustomerListViewModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h2>你好,@Model.UserName</h2>
+    <div> 
+        <table>
+            <tr>
+                <th>用户</th>
+                
+                <th>地址</th>
+            </tr>
+            @foreach (var item in Model.CustomerViewList)
+            {
+                <tr>
+                    <td>@item.CustomerName</td>
+                    
+                    <td>@item.Address</td>
+                </tr>
+            }
+        </table>
+       
+
+    </div>
+</body>
+</html>

@@ -14,10 +14,22 @@ namespace WebApplication2.Controllers
         public ActionResult Index()
         {
             EmployeeListViewModel empListModel = new EmployeeListViewModel();
+            //获取处理过的数据列表
+            empListModel.EmployeeViewList = getEmpVmList();
+            //获取时间问候语
+            empListModel.Greeting = getGreeting();
+            //获取用户名
+            empListModel.UserName = getUserName();
+            //将数据送往视图
+            return View(empListModel);
+        }
 
+        [NonAction]
+        List<EmployeeViewModel> getEmpVmList()
+        {
             //实例化员工信息业务层
             EmployeeBusinessLayer empBL = new EmployeeBusinessLayer();
-           //员工原始数据列表，获取来自业务层类的数据
+            //员工原始数据列表，获取来自业务层类的数据
             var listEmp = empBL.GetEmployeeList();
             //员工原始数据加工后的视图数据列表，当前状态是空的
             var listEmpVm = new List<EmployeeViewModel>();
@@ -38,10 +50,12 @@ namespace WebApplication2.Controllers
                 }
                 listEmpVm.Add(empVmObj);
             }
+            return listEmpVm;
+        }
 
-            //将处理过的数据列表送给强视图类型对象
-            empListModel.EmployeeViewList = listEmpVm;
-
+        [NonAction]
+        string getGreeting()
+        {
             string greeting;
             //获取当前时间
             DateTime dt = DateTime.Now;
@@ -55,9 +69,12 @@ namespace WebApplication2.Controllers
             {
                 greeting = "中午好";
             }
-            empListModel.Greeting = greeting;
-            empListModel.UserName = "管理员";
-            return View(empListModel);
+            return greeting;
+        }
+        [NonAction]
+        string getUserName()
+        {
+            return "管理员";
         }
     }
 }

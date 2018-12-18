@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication2.Models;
 using WebApplication2.DataAccessLayer;
 
 namespace WebApplication2.Models
@@ -12,7 +11,9 @@ namespace WebApplication2.Models
         public List<Employee> GetEmployeeList()
         {
             SalesERPDAL salesDal = new SalesERPDAL();
+            //var list = salesDal.Employees.ToList();
             return salesDal.Employees.ToList();
+           
             //var list = new List<Employee>();
 
             //Employee emp = new Employee();

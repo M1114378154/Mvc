@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CC639B23-5751-420A-B47F-84C3DBAE9489}</ProjectGuid>
+    <ProjectGuid>{DD923B85-BC49-4C8A-814D-BD9F8ED61CFB}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeFirstNewDatabaseSample</RootNamespace>
-    <AssemblyName>CodeFirstNewDatabaseSample</AssemblyName>
+    <RootNamespace>ConsoleApplication3</RootNamespace>
+    <AssemblyName>ConsoleApplication3</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -52,11 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BussinessLayer\BlogBusinessLayer.cs" />
-    <Compile Include="DataAccessLayer\BloggingContext.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Blog.cs" />
-    <Compile Include="Models\Post.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,7 +59,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

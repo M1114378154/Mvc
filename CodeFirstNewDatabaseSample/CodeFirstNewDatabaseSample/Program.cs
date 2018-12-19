@@ -16,6 +16,7 @@ namespace CodeFirstNewDatabaseSample
             QueryBlog();
             Update();
             QueryBlog();
+            Delete();
             Console.WriteLine("按任意键退出");
             Console.ReadKey();
         }
@@ -54,5 +55,17 @@ namespace CodeFirstNewDatabaseSample
             blog.Name = name;
             bbl.Update(blog);
         }
+
+        //删除
+        static void Delete()
+        {
+
+            BlogBusinessLayer bbl = new BlogBusinessLayer();
+            Console.Write("请输入删除id");
+            int id = int.Parse(Console.ReadLine());
+            Blog blog = bbl.Query(id);
+            bbl.Delete(blog);
+        }
+
     }
 }

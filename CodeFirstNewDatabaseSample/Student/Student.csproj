@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CC639B23-5751-420A-B47F-84C3DBAE9489}</ProjectGuid>
+    <ProjectGuid>{A5F9FF8A-4AB7-4C11-90BB-BF735D752179}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CodeFirstNewDatabaseSample</RootNamespace>
-    <AssemblyName>CodeFirstNewDatabaseSample</AssemblyName>
+    <RootNamespace>Student</RootNamespace>
+    <AssemblyName>Student</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -52,11 +52,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BussinessLayer\BlogBusinessLayer.cs" />
-    <Compile Include="DataAccessLayer\BloggingContext.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Blog.cs" />
-    <Compile Include="Models\Post.cs" />
+    <Compile Include="BussinessLayer\ClassBusinessLayer.cs" />
+    <Compile Include="DataAccessLayer\ClassContext.cs" />
+    <Compile Include="Models\Clas.cs" />
+    <Compile Include="Models\Stu.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

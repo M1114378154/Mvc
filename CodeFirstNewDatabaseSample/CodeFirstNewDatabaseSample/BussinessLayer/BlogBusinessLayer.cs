@@ -23,6 +23,8 @@ namespace CodeFirstNewDatabaseSample.BussinessLayer
                 db.SaveChanges();
             }
         }
+
+
         public List<Blog> Query()
         {
             using (var db = new BloggingContext())

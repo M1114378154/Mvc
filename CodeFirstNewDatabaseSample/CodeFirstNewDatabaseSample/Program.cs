@@ -18,11 +18,114 @@ namespace CodeFirstNewDatabaseSample
             //Update();
             //QueryBlog();
             //Delete();
-            AddPost();
-            Console.WriteLine("按任意键退出");
-            Console.ReadKey();
+            //AddPost();
+            All();
+
+            //DeletePost();
+            //UpdatePost();
+            //while (true)
+            //{
+            //    Console.Clear();
+            Operation();
+            //    All();
+            //}
+
+            //Console.WriteLine("按任意键退出");
+            //Console.ReadKey();
         }
 
+        static void All()
+        {
+            QueryBlog();
+            Console.WriteLine("1--新增博客  2--删除博客   3-更新博客名  4-操作贴子  5-退出");
+            int id = int.Parse(Console.ReadLine());
+            if (id == 1)
+            {
+                crateBlog();
+                Console.Clear();
+                All();
+
+
+            }
+            else if (id == 2)
+            {
+                Delete();
+                Console.Clear();
+                All();
+            }
+            else if (id == 3)
+            {
+                Update();
+                Console.Clear();
+                All();
+            }
+            else if (id == 4)
+            {
+                Operation();
+               
+            }
+            else if (id == 5)
+            {
+                return;
+            }
+            else
+            {
+                Console.WriteLine("请输入正确格式");
+                All();
+            }
+
+
+        }
+
+        //操作贴子
+        static void Operation()
+        {
+            int id = GetBlogId();
+
+                Console.Clear();
+                //QueryBlog(); 
+                DisplayPosts(id);
+                Console.WriteLine("1--新增贴子  2--删除贴子   3-更新贴子  4-返回上一层  5-退出");
+                int opId = int.Parse(Console.ReadLine());
+                ////用户选择某个博客（id）
+                //int blogId = GetBlogId();
+
+                if (opId == 1)
+                {
+                    AddPost();
+                    Console.Clear();
+                    Operation();
+                }
+                else if (opId == 2)
+                {
+                    DeletePost();
+                    Console.Clear();
+                    Operation();
+                }
+                else if (opId == 3)
+                {
+                    UpdatePost();
+                    Console.Clear();
+                    Operation();
+                }
+                else if (opId == 4)
+                {
+                    All();
+                }
+                else if (opId == 5)
+                {
+                    return;
+                }
+                else
+                {
+                    Console.WriteLine("请输入正确格式");
+                    Operation();
+                }
+
+            }
+        
+
+        //新增贴子
         static void AddPost()
         {
             //显示博客列表
@@ -42,7 +145,7 @@ namespace CodeFirstNewDatabaseSample
             post.Content = Console.ReadLine();
             post.BlogId = blogId;
             //贴子通过数据库上下文新增
-            using(var db=new BloggingContext())
+            using (var db = new BloggingContext())
             {
                 db.Posts.Add(post);
                 db.SaveChanges();
@@ -51,6 +154,46 @@ namespace CodeFirstNewDatabaseSample
             //显示指定博客的帖子列表
             DisplayPosts(blogId);
         }
+
+        //删除贴子
+        static void DeletePost()
+        {
+            QueryBlog();
+            BlogBusinessLayer bbl = new BlogBusinessLayer();
+            PostBussinessLayer pbl = new PostBussinessLayer();
+            Console.WriteLine("请输入一个博客ID");
+            int id = int.Parse(Console.ReadLine());
+            DisplayPosts(id);
+            Console.WriteLine("请输入删除的贴子");
+            int postId = int.Parse(Console.ReadLine());
+            Post post = pbl.QueryPost(postId);
+            pbl.DeletePost(post);
+            DisplayPosts(id);
+        }
+
+        //更新贴子
+        static void UpdatePost()
+        {
+            QueryBlog();
+            BlogBusinessLayer bbl = new BlogBusinessLayer();
+            PostBussinessLayer pbl = new PostBussinessLayer();
+            Console.WriteLine("请输入一个博客ID");
+            int blogId = int.Parse(Console.ReadLine());
+            DisplayPosts(blogId);
+            Console.WriteLine("请输入修改的贴子ID");
+            int postId = int.Parse(Console.ReadLine());
+            Post post = pbl.QueryPost(postId);
+            Console.WriteLine("请输入新标题");
+            string newTitle = Console.ReadLine();
+            post.Title = newTitle;
+            Console.WriteLine("请输入新内容");
+            string newContent = Console.ReadLine();
+            post.Content = newContent;
+            pbl.Update(post);
+            DisplayPosts(blogId);
+        }
+
+
 
         //用户选择某个博客(id)
         static int GetBlogId()
@@ -65,12 +208,12 @@ namespace CodeFirstNewDatabaseSample
         //显示指定博客的帖子列表
         static void DisplayPosts(int blogId)
         {
-            Console.WriteLine(blogId + "的贴子列表");
+            //Console.WriteLine(blogId + "的贴子列表");
             //创建一个列表（list 定义在外面 代码走出using后还能使用）
             List<Post> list = null;
-            
+
             using (var db = new BloggingContext())
-            {                
+            {
                 //根据博客ID获取博客（通过Find方法）
                 Blog blog = db.Blogs.Find(blogId);
                 //根据博客导航属性，获取所有该博客的贴子
@@ -79,7 +222,7 @@ namespace CodeFirstNewDatabaseSample
             //遍历所有贴子（item代表贴子），显示贴子标题（博客号-贴子标题）
             foreach (var item in list)
             {
-                Console.WriteLine(item.Blog.BlogId + "--" + item.Title+"--"+item.Content);
+                Console.WriteLine("博客ID:{0} ---- 贴子标题:{1}  ---- 贴子内容:{2} ---- 贴子ID:{3}", item.BlogId, item.Title, item.Content, item.PostId);
             }
 
 
@@ -97,6 +240,7 @@ namespace CodeFirstNewDatabaseSample
             //}
 
         }
+
         //根据指定的博客信息创建新帖子 
         //static void cratePost(int blogId)
         //{
@@ -112,6 +256,7 @@ namespace CodeFirstNewDatabaseSample
         //    post.BlogId = blogId;
         //}
         //增加---交互
+
         static void crateBlog()
         {
             Console.WriteLine("请输入一个博客名称");
@@ -146,16 +291,19 @@ namespace CodeFirstNewDatabaseSample
             bbl.Update(blog);
         }
 
-        //删除
+        //删除博客
         static void Delete()
         {
 
             BlogBusinessLayer bbl = new BlogBusinessLayer();
-            Console.Write("请输入删除id");
+            Console.WriteLine("请输入删除id");
             int id = int.Parse(Console.ReadLine());
             Blog blog = bbl.Query(id);
             bbl.Delete(blog);
         }
+
+
+
 
     }
 }

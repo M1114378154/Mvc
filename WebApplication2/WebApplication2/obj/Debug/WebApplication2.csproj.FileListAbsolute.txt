@@ -62,4 +62,3 @@ D:\MIN\MVC\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.dll
 D:\MIN\MVC\WebApplication2\WebApplication2\bin\EntityFramework.xml
 D:\MIN\MVC\WebApplication2\WebApplication2\bin\EntityFramework.SqlServer.xml
 D:\MIN\MVC\WebApplication2\WebApplication2\bin\zh-Hans\EntityFramework.resources.dll
-D:\MIN\MVC\WebApplication2\WebApplication2\obj\Debug\WebApplication2.csprojResolveAssemblyReference.cache

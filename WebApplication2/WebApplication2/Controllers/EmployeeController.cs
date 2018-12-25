@@ -43,6 +43,7 @@ namespace WebApplication2.Controllers
             foreach (var item in listEmp)
             {
                 EmployeeViewModel empVmObj = new EmployeeViewModel();
+               
                 empVmObj.EmployeeName = item.Name;
                 empVmObj.EmployeeSalary = item.Salary.ToString("C");
                 if (item.Salary > 1000)

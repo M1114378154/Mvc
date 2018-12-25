@@ -10,9 +10,14 @@ namespace WebApplication2.Models
     {
         public List<Employee> GetEmployeeList()
         {
-            SalesERPDAL salesDal = new SalesERPDAL();
-            //var list = salesDal.Employees.ToList();
-            return salesDal.Employees.ToList();
+            using (SalesERPDAL salesDal = new SalesERPDAL())
+            {
+            var list = salesDal.Employees.ToList();
+            //return salesDal.Employees.ToList();
+            return list;
+
+            }
+            
            
             //var list = new List<Employee>();
 

@@ -19,25 +19,25 @@ namespace CodeFirstNewDatabaseSample
             //QueryBlog();
             //Delete();
             //AddPost();
-            All();
-
+            //All();
+            SelectPost();
             //DeletePost();
             //UpdatePost();
             //while (true)
             //{
             //    Console.Clear();
-            Operation();
+            //Operation();
             //    All();
             //}
 
-            //Console.WriteLine("按任意键退出");
-            //Console.ReadKey();
+            Console.WriteLine("按任意键退出");
+            Console.ReadKey();
         }
 
         static void All()
         {
             QueryBlog();
-            Console.WriteLine("1--新增博客  2--删除博客   3-更新博客名  4-操作贴子  5-退出");
+            Console.WriteLine("1--新增博客  2--删除博客   3-更新博客名  4-操作贴子 5-查询贴子  6-退出");
             int id = int.Parse(Console.ReadLine());
             if (id == 1)
             {
@@ -64,7 +64,10 @@ namespace CodeFirstNewDatabaseSample
                 Operation();
                
             }
-            else if (id == 5)
+            else if(id == 5){
+                SelectPost();
+            }
+            else if (id == 6)
             {
                 return;
             }
@@ -74,6 +77,20 @@ namespace CodeFirstNewDatabaseSample
                 All();
             }
 
+
+        }
+        
+        //查询贴子
+        static void SelectPost()
+        {
+            Console.WriteLine("请输入查询的博客贴子");
+            string names = Console.ReadLine();
+            PostBussinessLayer pbl = new PostBussinessLayer();
+            var query = pbl.QueryForTitle(names);
+            foreach (var item in query)
+            {
+                Console.WriteLine(item.Title+ " "+ item.Content);
+            }
 
         }
 
@@ -121,7 +138,6 @@ namespace CodeFirstNewDatabaseSample
                     Console.WriteLine("请输入正确格式");
                     Operation();
                 }
-
             }
         
 

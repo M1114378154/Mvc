@@ -59,5 +59,15 @@ namespace CodeFirstNewDatabaseSample.BussinessLayer
                 db.SaveChanges();
             }
         }
+        public List<Post> QueryForTitle(string title)
+        {
+            using (var db=new BloggingContext())
+            {
+                var query = from x in db.Posts
+                            where x.Title.Contains(title)
+                              select x;
+                return query.ToList();
+            }
+        }
     }
 }

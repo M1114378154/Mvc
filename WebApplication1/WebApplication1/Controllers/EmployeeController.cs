@@ -31,7 +31,26 @@ namespace WebApplication1.Controllers
         }
 
 
+        public ActionResult UpdateEmployee()
+        {
+            return View();
+        }
+        public ActionResult SelectEmployee()
+        {
+            return View();
+        }
+        [HttpPost]
+        //查询
+        public ActionResult SelectEmployee(string searchString)
+        {
+            //ViewBag.name = name;
+            EmployeeBusinessLayer empBL = new EmployeeBusinessLayer();
+            var queryResult = empBL.QueryForName(searchString);
+            return View(queryResult);
+            
+        }
 
+        //保存
         public ActionResult Save(Employee emp)
         {
             //将数据保存
@@ -44,12 +63,32 @@ namespace WebApplication1.Controllers
             return new RedirectResult("index"); //跳转到index（RedirectResult:跳转）
         }
 
+        //删除
         public ActionResult Delete(int id)
         {
-            
+
             EmployeeBusinessLayer empBL = new EmployeeBusinessLayer();
             empBL.DeleteEmployee(id);
             //return id.ToString();
+            return RedirectToAction("index");
+        }
+
+        //编辑（抓取ID）
+        public ActionResult Update(int id)
+        {
+            EmployeeBusinessLayer empBL = new EmployeeBusinessLayer();
+            ViewBag.id = id;
+            Employee emp = empBL.Query(id);
+            //empBL.Query(id)
+            return View("UpdateEmployee",emp);
+            
+        }
+        [HttpPost]
+        //编辑
+        public ActionResult Update(Employee emp)
+        {
+            EmployeeBusinessLayer empBL = new EmployeeBusinessLayer();
+            empBL.UpdateEmp(emp);
             return RedirectToAction("index");
         }
 
@@ -86,7 +125,6 @@ namespace WebApplication1.Controllers
             return listEmpVm;
 
         }
-
 
         [NonAction]
         // 获取问候语

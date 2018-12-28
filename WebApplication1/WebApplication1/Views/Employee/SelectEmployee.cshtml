@@ -1,0 +1,42 @@
+﻿@*IEnumerable:有限的、可数数的集合*@
+@model IEnumerable<WebApplication1.Models.Employee>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>SelectEmployee</title>
+</head>
+<body>
+    <table class="table">
+        <tr>
+            <th>
+                姓名
+            </th>
+            <th>
+                工资
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Name
+                </td>
+                <td>
+                    @item.Salary
+                </td>
+            </tr>
+        }
+    </table>
+    <div>
+
+    </div>
+</body>
+</html>

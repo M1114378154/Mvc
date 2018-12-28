@@ -1,8 +1,10 @@
 ﻿@*强视图类型*@
 @model WebApplication1.ViewModels.EmployeeListViewModel
 
+
 @{
     Layout = null;
+
 }
 
 <!DOCTYPE html>
@@ -15,11 +17,15 @@
 <body>
     <h2>@Model.UserName,@Model.Greeting</h2>
     <p><a href="/employee/addNew">新增</a></p>
+    <form action="/employee/SelectEmployee" method="post">
+        <input type="text" name="searchString"> <input type="submit" value="查询">
+    </form>
+    
     <div> 
         <ul>
             @foreach (var item in Model.EmployeeViewList)
             {
-                <li>@item.EmployeeName,@item.EmployeeSalary,@item.EmployeeGrade <a href="/employee/delete/@item.EmployeeId">删除</a> </li>
+                <li>@item.EmployeeName,@item.EmployeeSalary,@item.EmployeeGrade <a href="/employee/delete/@item.EmployeeId">删除</a> &nbsp; <a href="/employee/Update/@item.EmployeeId">编辑</a> </li>
             }
         </ul>
     </div>

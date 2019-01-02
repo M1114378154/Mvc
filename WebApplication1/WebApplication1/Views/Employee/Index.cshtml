@@ -3,7 +3,7 @@
 
 
 @{
-    Layout = null;
+    Layout = "~/Views/Shared/MyView.cshtml";
 
 }
 
@@ -20,13 +20,22 @@
     <form action="/employee/SelectEmployee" method="post">
         <input type="text" name="searchString"> <input type="submit" value="查询">
     </form>
-    
-    <div> 
+
+    <div>
         <ul>
+            @*@foreach (var item in Model.EmployeeViewList)
+                {
+                    <li>@item.EmployeeName,@item.EmployeeSalary,@item.EmployeeGrade <a href="/employee/delete/@item.EmployeeId">删除</a> &nbsp; <a href="/employee/Update/@item.EmployeeId">编辑</a> </li>
+                }*@
             @foreach (var item in Model.EmployeeViewList)
             {
-                <li>@item.EmployeeName,@item.EmployeeSalary,@item.EmployeeGrade <a href="/employee/delete/@item.EmployeeId">删除</a> &nbsp; <a href="/employee/Update/@item.EmployeeId">编辑</a> </li>
-            }
+                <li>
+                @Html.DisplayFor(modelItem => item.EmployeeName)
+                @Html.DisplayFor(modelItem => item.EmployeeSalary)
+                @Html.DisplayFor(modelItem => item.EmployeeGrade)
+                @Html.ActionLink("删除", "delete", new { id = item.EmployeeId }) &nbsp;@Html.ActionLink("编辑", "Update", new { id = item.EmployeeId })
+            </li>
+           }
         </ul>
     </div>
 </body>

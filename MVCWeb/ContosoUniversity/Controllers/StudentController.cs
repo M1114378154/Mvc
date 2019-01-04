@@ -21,6 +21,7 @@ namespace ContosoUniversity.Controllers
             ///条件运算符
             // sortOrder接收排序参数，根据sortOrder值改变下一次排序的参数值   IsNullOrEmpty判断是否没空（）
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            //如果Date为T时执行date_desc；为F时则为Date
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             //整体查询(Linq查询)
             var students = from s in db.Students

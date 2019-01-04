@@ -46,7 +46,7 @@ namespace ContosoUniversity.Controllers
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ValidateAntiForgeryToken] //为了防止“过多发布”攻击,跨站点防止伪造攻击
         public ActionResult Create([Bind(Include = "ID,Name,EnrollmentDate")] Student student)
         {
             if (ModelState.IsValid)

@@ -15,9 +15,13 @@ namespace ContosoUniversity.DAL
             //构建学生数据
             var students = new List<Student>
             {
-                new Student {Name="Begin" ,EnrollmentDate=DateTime.Parse("2019-1-1")},
-                new Student {Name="Again" ,EnrollmentDate=DateTime.Parse("2019-1-2")},
-
+                new Student {Name="Begin1" ,EnrollmentDate=DateTime.Parse("2019-4-1")},
+                new Student {Name="Again2" ,EnrollmentDate=DateTime.Parse("2019-1-2")},
+                 new Student {Name="Begin3" ,EnrollmentDate=DateTime.Parse("2019-3-1")},
+                new Student {Name="Again4" ,EnrollmentDate=DateTime.Parse("2019-9-2")},
+                 new Student {Name="Begi3n" ,EnrollmentDate=DateTime.Parse("2019-4-1")},
+                new Student {Name="Aga2in" ,EnrollmentDate=DateTime.Parse("2019-3-2")},
+                 new Student {Name="Be3gin" ,EnrollmentDate=DateTime.Parse("2019-1-1")}
             };
 
             //将学生数据加入实体集

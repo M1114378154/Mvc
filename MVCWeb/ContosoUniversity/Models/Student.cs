@@ -11,8 +11,7 @@ namespace ContosoUniversity.Models
         [Display(Name="姓名")] //数据注解
 
         public string Name { get; set; }
-        [Display(Name="注册日期")]
-
+        [Display(Name = "注册日期")]
         public DateTime EnrollmentDate { get; set; }  //注册事件
 
         //导航属性 来表示（一对多关系）   Enrollment注册

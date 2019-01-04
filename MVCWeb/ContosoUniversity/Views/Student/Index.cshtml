@@ -13,10 +13,15 @@
     <tr>
         <th>
             @*显示实体属性名*@
-            @Html.DisplayNameFor(model => model.Name) 
+            @*@Html.DisplayNameFor(model => model.Name)*@ 
+            @Html.ActionLink("姓名", "Index", new { sortOrder = ViewBag.NameSortParm })
+
+
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.EnrollmentDate)
+            @*@Html.DisplayNameFor(model => model.EnrollmentDate)*@
+            @Html.ActionLink("注册日期", "Index", new { sortOrder = ViewBag.DateSortParm })
+
         </th>
         <th></th>
     </tr>
@@ -25,6 +30,7 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
+
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.EnrollmentDate)

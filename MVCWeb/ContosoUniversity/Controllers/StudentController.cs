@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using ContosoUniversity.DAL;
 using ContosoUniversity.Models;
+using PagedList;
+
 
 namespace ContosoUniversity.Controllers
 {
@@ -16,13 +18,26 @@ namespace ContosoUniversity.Controllers
         private SchoolContext db = new SchoolContext();
 
         // GET: Student
-        public ActionResult Index(string sortOrder)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             ///条件运算符
             // sortOrder接收排序参数，根据sortOrder值改变下一次排序的参数值   IsNullOrEmpty判断是否没空（）
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             //如果Date为T时执行date_desc；为F时则为Date
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             //整体查询(Linq查询)
             var students = from s in db.Students
                            select s;
@@ -43,7 +58,11 @@ namespace ContosoUniversity.Controllers
                     break;
             }
 
-            return View(students.ToList());
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(students.ToPagedList(pageNumber, pageSize));
+            //把结果数据集传到数据集返回视图
+            //return View(students.ToList());
             
             //return View(db.Students.ToList());
             //return View(result);

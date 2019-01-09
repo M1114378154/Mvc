@@ -9,7 +9,7 @@ namespace ContosoUniversity.DAL
 {
     public class SchoolInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<SchoolContext>
     {
-        //重写Seed方法
+        //重写Seed（种子）方法
         protected override void Seed(SchoolContext context)
         {
             //构建学生数据

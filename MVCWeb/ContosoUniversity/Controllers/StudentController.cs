@@ -9,13 +9,15 @@ using System.Web.Mvc;
 using ContosoUniversity.DAL;
 using ContosoUniversity.Models;
 using PagedList;
-
+using System.Data.Entity.Infrastructure;
 
 namespace ContosoUniversity.Controllers
 {
     public class StudentController : Controller
     {
         private SchoolContext db = new SchoolContext();
+
+
 
         // GET: Student
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
@@ -41,6 +43,13 @@ namespace ContosoUniversity.Controllers
             //整体查询(Linq查询)
             var students = from s in db.Students
                            select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.Name.Contains(searchString)
+                                       || s.Image.Contains(searchString));
+            }
+
             //根据排序参数sortOrder进一步完善查询（排序）
             switch (sortOrder)
             {
@@ -63,7 +72,7 @@ namespace ContosoUniversity.Controllers
             return View(students.ToPagedList(pageNumber, pageSize));
             //把结果数据集传到数据集返回视图
             //return View(students.ToList());
-            
+
             //return View(db.Students.ToList());
             //return View(result);
         }
@@ -121,6 +130,7 @@ namespace ContosoUniversity.Controllers
             return View(student);
         }
 
+
         // POST: Student/Edit/5
         // 为了防止“过多发布”攻击，请启用要绑定到的特定属性，有关 
         // 详细信息，请参阅 http://go.microsoft.com/fwlink/?LinkId=317598。
@@ -128,11 +138,20 @@ namespace ContosoUniversity.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,EnrollmentDate")] Student student)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(student).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    db.Entry(student).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            
+            catch (RetryLimitExceededException /* dex */)
+            {
+                //Log the error (uncomment dex variable name and add a line here to write a log.
+                ModelState.AddModelError("", "Unable to save changes. Try again, and if the problem persists see your system administrator.");
             }
             return View(student);
         }
@@ -171,5 +190,7 @@ namespace ContosoUniversity.Controllers
             }
             base.Dispose(disposing);
         }
+
+
     }
 }

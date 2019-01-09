@@ -8,10 +8,15 @@ namespace ContosoUniversity.Models
     {
 
         public int ID { get; set; }
-        [Display(Name="姓名")] //数据注解
-  
+        [StringLength(50)]
 
-        public string Name { get; set; }
+        [Display(Name="姓名")] //数据注解
+          public string Name { get; set; }
+     //   [StringLength(50, ErrorMessage = "First name cannot be longer than 50 characters.")]
+
+        [DataType(DataType.Date)]
+        //显式指定日期格式
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "注册日期")]
         public DateTime EnrollmentDate { get; set; }  //注册事件
 

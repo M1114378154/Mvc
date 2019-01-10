@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebApplication1.Models
 {
-    public class Genre
+    public class Genre //流派类
     {
         public int GenreId { get; set; }
         public string Name { get; set; }

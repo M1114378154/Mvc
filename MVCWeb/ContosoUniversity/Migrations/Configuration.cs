@@ -94,7 +94,16 @@ namespace ContosoUniversity.Migrations
                     context.Enrollments.Add(e);
                 }
             }
+            //context.SaveChanges();
+        
+        //构建用户数据
+        var users = new List<UserDetails> {
+                new UserDetails { UserName="admin",Password="admin"},
+                new UserDetails { UserName="guest",Password="guest"}
+            };
+           users.ForEach(u => context.UserDbset.Add(u));
             context.SaveChanges();
-        }
+
+}
     }
 }

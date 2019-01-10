@@ -13,6 +13,8 @@ using System.Data.Entity.Infrastructure;
 
 namespace ContosoUniversity.Controllers
 {
+    //控制整个控制器授权访问
+    [Authorize]
     public class StudentController : Controller
     {
         private SchoolContext db = new SchoolContext();
@@ -91,7 +93,7 @@ namespace ContosoUniversity.Controllers
             }
             return View(student);
         }
-
+        [Authorize]  //授权特性
         // GET: Student/Create
         public ActionResult Create()
         {

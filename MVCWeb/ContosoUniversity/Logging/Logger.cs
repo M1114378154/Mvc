@@ -76,5 +76,6 @@ namespace ContosoUniversity.Logging
             sb.Append(exception.ToString());
             return sb.ToString();
         }
+
     }
 }

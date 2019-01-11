@@ -10,12 +10,19 @@ namespace WebApplication1
 {
     public class MvcApplication : System.Web.HttpApplication
     {
+
         protected void Application_Start()
         {
+            System.Data.Entity.Database.SetInitializer(new WebApplication1.Models.SampleData());
+
+            
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+
         }
+        
     }
 }

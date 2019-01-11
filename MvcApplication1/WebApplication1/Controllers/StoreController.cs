@@ -10,39 +10,29 @@ namespace MvcMusicStore.Controllers
     public class StoreController : Controller
     {
         //
+        MusicStoreEntities storeDB = new MusicStoreEntities();
+        //
         // GET: /Store/
         public ActionResult Index()
         {
-            var genres = new List<Genre>{
-                new Genre { Name = "Disco"},
-                new Genre { Name = "Jazz"},
-                new Genre { Name = "Rock"}
-            };
+            var genres = storeDB.Genres.ToList();
             return View(genres);
         }
 
         //
         // GET: /Store/Browse
-        [HttpPost]
-        [ValidateAntiForgeryToken]//防止过多发布
-        public string Browse()
-        {
-            return "Hello from Store.Browse()";
-        }
+        
+        
         //
         // GET: /Store/Details
-        [HttpPost]
-        [ValidateAntiForgeryToken]//防止过多发布
-        public string Details()
-        {
-            return "Hello from Store.Details()";
-        }
+        
         //
         // GET: /Store/Browse?genre=Disco
         public ActionResult Browse(string genre)
         {
-            var genreModel = new Genre { Name = genre };
-            return View(genreModel);
+            var genreModel = storeDB.Genres.Include("Albums").Single(g => g.Name == genre);
+
+            return this.View(genreModel);
         }
         //
         // GET: /Store/Details/5
@@ -50,7 +40,7 @@ namespace MvcMusicStore.Controllers
 
         public ActionResult Details(int id)
         {
-            var album = new Album { Title = "Album " + id };
+            var album = storeDB.Albums.Find(id);
             return View(album);
         }
     }
